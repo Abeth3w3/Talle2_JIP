@@ -1,21 +1,17 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MenuSystem1 : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-  public  void Jugar()
+    public void Jugar()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);  
+        Debug.Log("✅ BOTÓN JUGAR FUNCIONA");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-    // Update is called once per frame
-  public  void Salir()
+    public void Salir()
     {
-        Debug.Log("Saliendo del juego...");
-       Application.Quit(); 
+        Debug.Log("✅ BOTÓN SALIR FUNCIONA");
+        Application.Quit();
     }
 }

@@ -6,6 +6,7 @@ public class MovePlayer : MonoBehaviour
     public static MovePlayer Instance;
 
     private Rigidbody2D rb;
+    private Animator Animator;
     private float horizontal;
     public float speed;
     public float jumpForce;
@@ -16,6 +17,7 @@ public class MovePlayer : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        Animator = GetComponent<Animator>();
     }
 
 
@@ -23,6 +25,13 @@ public class MovePlayer : MonoBehaviour
     {
 
         horizontal = Input.GetAxisRaw("Horizontal");
+
+        Animator.SetBool("running", horizontal != 0.0f);
+        Animator.SetBool("jumping", !Grounded);
+
+
+        if (horizontal < 0.0f) transform.localScale = new Vector3(-4.828462f, 4.726093f, 1.0f);
+        else if (horizontal > 0.0f) transform.localScale = new Vector3(4.828462f, 4.726093f, 1.0f);
 
         Debug.DrawRay(transform.position, Vector3.down * groundCheckRadius, Color.red);
 
@@ -42,6 +51,7 @@ public class MovePlayer : MonoBehaviour
 
     {
         rb.AddForce(Vector2.up * jumpForce);
+
     }
 
     private void FixedUpdate()

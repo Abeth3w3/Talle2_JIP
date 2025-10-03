@@ -8,10 +8,10 @@ public class PlayerDash : MonoBehaviour
     private MovePlayer player;
 
     [Header("Dash Settings")]
-    [SerializeField] private float dashPower = 20f;     // velocidad del dash
-    [SerializeField] private float dashTime = 0.2f;     // duración del dash
-    [SerializeField] private float dashCooldown = 0.5f; // tiempo entre dashes
-    [SerializeField] private int maxAirDashes = 1;      // dashes permitidos en el aire
+    [SerializeField] private float dashPower = 20f;
+    [SerializeField] private float dashTime = 0.2f;
+    [SerializeField] private float dashCooldown = 0.5f;
+    [SerializeField] private int maxAirDashes = 1;
 
     private bool isDashing;
     private bool canDash = true;
@@ -46,6 +46,7 @@ public class PlayerDash : MonoBehaviour
                 x = transform.localScale.x > 0 ? 1 : -1;
 
             Vector2 dashDir = new Vector2(x, y).normalized;
+
             StartCoroutine(Dash(dashDir));
         }
     }

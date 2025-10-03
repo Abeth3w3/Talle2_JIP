@@ -1,45 +1,67 @@
-using UnityEngine;
-using static UnityEditor.Searcher.SearcherWindow.Alignment;
+﻿using UnityEngine;
 
-public class escalar : MonoBehaviour
+public class WallClimb : MonoBehaviour
 {
-    Rigidbody2D rb;
-    private bool contacto;
-    private float vertical;
-    private float X;
-    [SerializeField] private float velocidad;
-    void Start()
+    private Rigidbody2D rb;
+
+    [Header("Wall Settings")]
+    [SerializeField] private float wallCheckDistance = 0.5f; // Distancia del raycast horizontal
+    [SerializeField] private float wallClimbSpeed = 4f;      // Velocidad al escalar
+    [SerializeField] private float wallSlideSpeed = -1f;     // Velocidad al deslizarse
+    [SerializeField] private LayerMask wallLayer;            // Capa de las paredes
+
+    private bool isTouchingWall;
+    private bool isClimbing;
+    private float defaultGravity;
+
+    private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        X = rb.gravityScale;
+        defaultGravity = rb.gravityScale;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        agarre();
+        
+        isTouchingWall = Physics2D.Raycast(transform.position, Vector2.right * transform.localScale.x, wallCheckDistance, wallLayer);
+
+        
+        Debug.DrawRay(transform.position, Vector2.right * transform.localScale.x * wallCheckDistance, Color.green);
+
+        
+        if (isTouchingWall && Input.GetKey(KeyCode.W))
+        {
+            StartClimb();
+        }
+        
+        else if (isTouchingWall && Input.GetKey(KeyCode.S))
+        {
+            WallSlide();
+        }
+        else
+        {
+            StopClimb();
+        }
+
     }
-    public void agarre()
+
+    private void StartClimb()
     {
-        if (Input.GetKey(KeyCode.LeftShift) && contacto)
-        {
-            rb.constraints = RigidbodyConstraints2D.FreezePositionX;
-            vertical = Input.GetAxisRaw("Vertical");
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, vertical * velocidad);
-            rb.gravityScale = 0f;
-        }
-        else if (Input.GetKeyUp(KeyCode.Space))
-        {
-            rb.constraints = RigidbodyConstraints2D.None;
-            rb.gravityScale = X;
-            contacto = false;
-        }
+        rb.gravityScale = 0f; 
+        rb.linearVelocity = new Vector2(0, wallClimbSpeed); 
+        isClimbing = true;
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    private void WallSlide()
     {
-        if (collision.gameObject.CompareTag("escalable"))
-        {
-            contacto = true;
-        }
+        rb.gravityScale = 0f;
+        rb.linearVelocity = new Vector2(0, wallSlideSpeed); 
+        isClimbing = false;
+    }
+
+    private void StopClimb()
+    {
+        rb.gravityScale = defaultGravity; 
+        isClimbing = false;
     }
 }

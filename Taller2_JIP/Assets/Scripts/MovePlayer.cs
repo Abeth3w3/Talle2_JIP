@@ -42,6 +42,7 @@ public class MovePlayer : MonoBehaviour
         else Grounded = false;
 
         if (Input.GetKeyDown(KeyCode.Space) && Grounded)
+
         {
 
             Jump();

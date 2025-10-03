@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 680efc91fd5c3174c817cad83b0703e7
+guid: ae14147ac968dc348b78b178b73b4792
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5130558894233647175
-    second: Fondo_0
+      213: -9054256346355997990
+    second: Botonpausa_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Fondo_0
+      name: Botonpausa_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 8
         y: 0
-        width: 1200
-        height: 750
+        width: 216
+        height: 223
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9b78bf95ed79cc8b0800000000000000
-      internalID: -5130558894233647175
+      spriteID: ad2ef1213d1d85280800000000000000
+      internalID: -9054256346355997990
       vertices: []
       indices: 
       edges: []
@@ -160,8 +160,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Fondo_0: -5130558894233647175
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -8,7 +8,8 @@ public class PlayerDash : MonoBehaviour
     private MovePlayer player;
 
     [Header("Dash Settings")]
-    [SerializeField] private float dashPower = 20f;
+    [SerializeField] private float dashPowerHorizontal = 20f;
+    [SerializeField] private float dashPowerVertical = 15f;
     [SerializeField] private float dashTime = 0.2f;
     [SerializeField] private float dashCooldown = 0.5f;
     [SerializeField] private int maxAirDashes = 1;
@@ -46,7 +47,6 @@ public class PlayerDash : MonoBehaviour
                 x = transform.localScale.x > 0 ? 1 : -1;
 
             Vector2 dashDir = new Vector2(x, y).normalized;
-
             StartCoroutine(Dash(dashDir));
         }
     }
@@ -60,12 +60,27 @@ public class PlayerDash : MonoBehaviour
         float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
 
-        rb.linearVelocity = dir * dashPower;
+        player.enabled = false;
+        rb.linearVelocity = Vector2.zero;
+
+        Vector2 dashVelocity;
+
+        if (dir.y == 0)
+            dashVelocity = new Vector2(dir.x * dashPowerHorizontal, 0);
+        else if (dir.x == 0)
+            dashVelocity = new Vector2(0, dir.y * dashPowerVertical);
+        else
+            dashVelocity = new Vector2(dir.x * dashPowerHorizontal, dir.y * dashPowerVertical).normalized *
+                           ((dashPowerHorizontal + dashPowerVertical) / 2f);
+
+        rb.linearVelocity = dashVelocity;
 
         yield return new WaitForSeconds(dashTime);
 
         rb.gravityScale = originalGravity;
         isDashing = false;
+
+        player.enabled = true;
 
         yield return new WaitForSeconds(dashCooldown);
         canDash = true;

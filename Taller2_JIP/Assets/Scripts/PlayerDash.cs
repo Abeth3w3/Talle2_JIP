@@ -4,6 +4,7 @@ using UnityEngine;
 public class PlayerDash : MonoBehaviour
 {
     private Rigidbody2D rb;
+    private Animator Animator;
     private MovePlayer player;
 
     [Header("Dash Settings")]
@@ -21,6 +22,7 @@ public class PlayerDash : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        Animator = GetComponent<Animator>();
         player = GetComponent<MovePlayer>();
         baseGravity = rb.gravityScale;
         airDashesRemaining = maxAirDashes;
@@ -28,19 +30,18 @@ public class PlayerDash : MonoBehaviour
 
     private void Update()
     {
-        // 🔄 reset de dashes al tocar el suelo
+        Animator.SetBool("dashing", !canDash);
+
         if (IsGrounded())
         {
             airDashesRemaining = maxAirDashes;
         }
 
-        // input del dash (ej: Shift)
         if (Input.GetKeyDown(KeyCode.LeftShift) && canDash && airDashesRemaining > 0)
         {
             float x = Input.GetAxisRaw("Horizontal");
             float y = Input.GetAxisRaw("Vertical");
 
-            // si no hay input, dash hacia donde mira
             if (x == 0 && y == 0)
                 x = transform.localScale.x > 0 ? 1 : -1;
 

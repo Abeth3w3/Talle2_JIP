@@ -1,13 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public enum ItemType
-{
-    Coin,
-    Key,
-    Gem,
-    Potion
-}
+
 
 public class GameManager : MonoBehaviour
 {

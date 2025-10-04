@@ -1,33 +1,35 @@
 using UnityEngine;
-using TMPro; // Necesario para usar TextMeshPro
+using TMPro;
 
 public class ContadorTiempo : MonoBehaviour
 {
-    public TextMeshProUGUI tiempoText; // Arrastra aquí tu texto en el inspector
+    public TextMeshProUGUI tiempoTexto; // Asigna el texto desde el Inspector
     private float tiempoTranscurrido = 0f;
-    private bool contar = true;
+    private bool contando = true;
 
     void Update()
     {
-        if (contar)
+        if (contando)
         {
             tiempoTranscurrido += Time.deltaTime;
 
             int minutos = Mathf.FloorToInt(tiempoTranscurrido / 60f);
             int segundos = Mathf.FloorToInt(tiempoTranscurrido % 60f);
 
-            tiempoText.text = minutos.ToString("00") + ":" + segundos.ToString("00");
+            tiempoTexto.text = minutos.ToString("00") + ":" + segundos.ToString("00");
         }
     }
 
     public void PausarContador()
     {
-        contar = false;
+        contando = false;
     }
 
     public void ReiniciarContador()
     {
         tiempoTranscurrido = 0f;
-        contar = true;
+        contando = true;
     }
+
+    public float ObtenerTiempo() => tiempoTranscurrido;
 }

@@ -1,33 +1,40 @@
 using UnityEngine;
 
-public enum ItemType { Coin, Gem, Key }
-
 public class CollectibleItem : MonoBehaviour
 {
-    public ItemType itemType = ItemType.Coin;
-    public int value = 1;
-    public AudioClip pickupSfx;
+    public ItemType itemType; // Asignar desde el Inspector
+    public int value = 1;     // Valor base, puedes ajustarlo según el tipo
+    public ParticleSystem pickupEffect;
 
-    void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            switch (itemType)
+            // Actualizar GameManager si lo estás usando
+            if (GameManager.Instance != null)
             {
-                case ItemType.Coin:
-                case ItemType.Gem:
-                    GameManager.Instance.AddItem(itemType, value);
-                    break;
-
-                case ItemType.Key:
-                    GameManager.Instance.GetKey(); 
-                    break;
+                switch (itemType)
+                {
+                    case ItemType.Coin:
+                        GameManager.Instance.AddCoin(value);
+                        break;
+                    case ItemType.Gem:
+                        GameManager.Instance.AddItem(itemType, value); // o AddGem si tienes ese método
+                        break;
+                    case ItemType.Key:
+                        GameManager.Instance.GetKey(); // o AddItem si prefieres
+                        break;
+                }
             }
 
-            if (pickupSfx != null)
-                AudioSource.PlayClipAtPoint(pickupSfx, transform.position);
+            // Efecto visual al recoger
+            if (pickupEffect != null)
+            {
+                Instantiate(pickupEffect.gameObject, transform.position, Quaternion.identity);
+            }
 
-            Destroy(gameObject); 
+            // Destruir el objeto recogido
+            Destroy(gameObject);
         }
     }
 }

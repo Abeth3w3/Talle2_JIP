@@ -12,12 +12,22 @@ public class CollectibleItem : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            GameManager.Instance.AddItem(itemType, value);
+            switch (itemType)
+            {
+                case ItemType.Coin:
+                case ItemType.Gem:
+                    GameManager.Instance.AddItem(itemType, value);
+                    break;
+
+                case ItemType.Key:
+                    GameManager.Instance.GetKey(); 
+                    break;
+            }
 
             if (pickupSfx != null)
                 AudioSource.PlayClipAtPoint(pickupSfx, transform.position);
 
-            Destroy(gameObject);
+            Destroy(gameObject); 
         }
     }
 }

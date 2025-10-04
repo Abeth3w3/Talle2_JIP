@@ -14,7 +14,7 @@ public class PlayerDash : MonoBehaviour
     [SerializeField] private float dashCooldown = 0.5f;
     [SerializeField] private int maxAirDashes = 1;
 
-    private bool isDashing;
+    public bool isDashing;
     private bool canDash = true;
     private int airDashesRemaining;
 

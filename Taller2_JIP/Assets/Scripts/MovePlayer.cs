@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class MovePlayer : MonoBehaviour
 {
+    public GameObject BulletPrefab;
     public static MovePlayer Instance;
 
     private Rigidbody2D rb;
@@ -12,6 +13,8 @@ public class MovePlayer : MonoBehaviour
     private bool Grounded;
     private bool OnWall;
     public float groundCheckRadius;
+    private float LastShoot;
+
 
     [Header("Detección de suelo y paredes")]
     public LayerMask groundLayer;
@@ -55,11 +58,28 @@ public class MovePlayer : MonoBehaviour
         {
             Jump();
         }
+
+        if (Input.GetKey(KeyCode.F) && Grounded)
+        {
+            Shoot();
+            LastShoot = Time.time;
+        }
     }
 
     private void Jump()
     {
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+    }
+
+    private void Shoot()
+    {
+        Vector3 direction;
+        if (transform.localScale.x == 1.0f) direction = Vector2.right;
+        else direction = Vector2.left;
+        Animator.SetTrigger("shooting");
+        Instantiate(BulletPrefab, transform.position, Quaternion.identity);
+        GameObject bullet = Instantiate(BulletPrefab, transform.position, Quaternion.identity); 
+        bullet.GetComponent<BulletScript>().SetDirection(direction);
     }
 
     private void FixedUpdate()

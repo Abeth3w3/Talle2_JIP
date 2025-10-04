@@ -5,13 +5,13 @@ public class WallClimb : MonoBehaviour
     private Rigidbody2D rb;
 
     [Header("Wall Settings")]
-    [SerializeField] private float wallCheckDistance = 0.5f; // Distancia del raycast horizontal
-    [SerializeField] private float wallClimbSpeed = 4f;      // Velocidad al escalar
-    [SerializeField] private float wallSlideSpeed = -1f;     // Velocidad al deslizarse
-    [SerializeField] private LayerMask wallLayer;            // Capa de las paredes
+    [SerializeField] private float wallCheckDistance = 0.5f; 
+    [SerializeField] private float wallClimbSpeed = 4f;      
+    [SerializeField] private float wallSlideSpeed = -1f;     
+    [SerializeField] private LayerMask wallLayer;            
 
     private bool isTouchingWall;
-    private bool isClimbing;
+    public bool isClimbing;
     private float defaultGravity;
 
     private void Awake()

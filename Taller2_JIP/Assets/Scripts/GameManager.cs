@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
 
     private float elapsedTime;
     private Dictionary<ItemType, int> itemsCollected = new Dictionary<ItemType, int>();
+
+    public bool HasKey { get; private set; }
 
     void Awake()
     {
@@ -51,5 +53,12 @@ public class GameManager : MonoBehaviour
     {
         Coins = 0; Kills = 0; Deaths = 0; Score = 0; elapsedTime = 0;
         itemsCollected.Clear();
+        HasKey = false; 
+    }
+
+    public void GetKey()
+    {
+        HasKey = true;
+        Debug.Log("¡Llave conseguida!");
     }
 }

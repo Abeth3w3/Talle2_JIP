@@ -2,15 +2,14 @@ using UnityEngine;
 
 public class CollectibleItem : MonoBehaviour
 {
-    public ItemType itemType; // Asignar desde el Inspector
-    public int value = 1;     // Valor base, puedes ajustarlo según el tipo
-    public ParticleSystem pickupEffect;
+    public ItemType itemType; 
+    public int value = 1;     
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            // Actualizar GameManager si lo estás usando
+            
             if (GameManager.Instance != null)
             {
                 switch (itemType)
@@ -19,21 +18,15 @@ public class CollectibleItem : MonoBehaviour
                         GameManager.Instance.AddCoin(value);
                         break;
                     case ItemType.Gem:
-                        GameManager.Instance.AddItem(itemType, value); // o AddGem si tienes ese método
+                        GameManager.Instance.AddItem(itemType, value); 
                         break;
                     case ItemType.Key:
-                        GameManager.Instance.GetKey(); // o AddItem si prefieres
+                        GameManager.Instance.GetKey(); 
                         break;
                 }
             }
 
-            // Efecto visual al recoger
-            if (pickupEffect != null)
-            {
-                Instantiate(pickupEffect.gameObject, transform.position, Quaternion.identity);
-            }
-
-            // Destruir el objeto recogido
+      
             Destroy(gameObject);
         }
     }

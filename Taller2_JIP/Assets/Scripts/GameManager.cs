@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
+
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
@@ -22,7 +24,10 @@ public class GameManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        else Destroy(gameObject);
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     void Update()
@@ -30,12 +35,29 @@ public class GameManager : MonoBehaviour
         elapsedTime += Time.deltaTime;
     }
 
-    public void AddCoin(int val = 1) { Coins += val; Score += val * 10; }
-    public void AddKill(int val = 1) { Kills += val; Score += 50 * val; }
-    public void AddDeath(int val = 1) { Deaths += val; Score -= 20 * val; }
+    public void AddCoin(int val = 1)
+    {
+        Coins += val;
+        Score += val * 10;
+    }
+
+    public void AddKill(int val = 1)
+    {
+        Kills += val;
+        Score += 50 * val;
+    }
+
+    public void AddDeath(int val = 1)
+    {
+        Deaths += val;
+        Score -= 20 * val;
+    }
+
     public void AddItem(ItemType type, int val = 1)
     {
-        if (!itemsCollected.ContainsKey(type)) itemsCollected[type] = 0;
+        if (!itemsCollected.ContainsKey(type))
+            itemsCollected[type] = 0;
+
         itemsCollected[type] += val;
         AddCoin(val);
     }
@@ -51,9 +73,13 @@ public class GameManager : MonoBehaviour
 
     public void ResetForNewRun()
     {
-        Coins = 0; Kills = 0; Deaths = 0; Score = 0; elapsedTime = 0;
+        Coins = 0;
+        Kills = 0;
+        Deaths = 0;
+        Score = 0;
+        elapsedTime = 0;
         itemsCollected.Clear();
-        HasKey = false; 
+        HasKey = false;
     }
 
     public void GetKey()

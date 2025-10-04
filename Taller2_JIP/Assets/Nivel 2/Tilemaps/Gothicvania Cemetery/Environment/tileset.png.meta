@@ -127,6 +127,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -134,10 +147,10 @@ TextureImporter:
       name: tileset_0
       rect:
         serializedVersion: 2
-        x: 15
-        y: 47
-        width: 34
-        height: 50
+        x: 16
+        y: 48
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,10 +169,10 @@ TextureImporter:
       name: tileset_1
       rect:
         serializedVersion: 2
-        x: 63
-        y: 63
-        width: 98
-        height: 43
+        x: 64
+        y: 64
+        width: 96
+        height: 41
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -178,10 +191,10 @@ TextureImporter:
       name: tileset_2
       rect:
         serializedVersion: 2
-        x: 175
-        y: 47
-        width: 34
-        height: 50
+        x: 176
+        y: 48
+        width: 32
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,10 +213,10 @@ TextureImporter:
       name: tileset_3
       rect:
         serializedVersion: 2
-        x: 223
-        y: 15
-        width: 34
-        height: 98
+        x: 224
+        y: 16
+        width: 32
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -222,10 +235,10 @@ TextureImporter:
       name: tileset_4
       rect:
         serializedVersion: 2
-        x: 259
-        y: 63
-        width: 26
-        height: 34
+        x: 260
+        y: 64
+        width: 24
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -244,10 +257,10 @@ TextureImporter:
       name: tileset_5
       rect:
         serializedVersion: 2
-        x: 303
-        y: 95
-        width: 98
-        height: 50
+        x: 304
+        y: 96
+        width: 96
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -266,10 +279,10 @@ TextureImporter:
       name: tileset_6
       rect:
         serializedVersion: 2
-        x: 277
-        y: 15
-        width: 150
-        height: 75
+        x: 278
+        y: 16
+        width: 148
+        height: 73
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -288,7 +301,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 3ce1890a5116706448c1f2b56abf6bc8
     internalID: 0
     vertices: []
     indices: 

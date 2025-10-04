@@ -1,12 +1,22 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneController : MonoBehaviour
+public class Door : MonoBehaviour
 {
-    public string nextScene;
+    [SerializeField] private string sceneToLoad; 
 
-    public void EndLevel()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        SceneManager.LoadScene(nextScene);
+        if (other.CompareTag("Player"))
+        {
+            if (GameManager.Instance != null && GameManager.Instance.HasKey) 
+            {
+                SceneManager.LoadScene(sceneToLoad);
+            }
+            else
+            {
+                Debug.Log("Necesitas la llave para abrir la puerta.");
+            }
+        }
     }
 }

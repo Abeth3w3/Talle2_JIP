@@ -15,7 +15,6 @@ public class MovePlayer : MonoBehaviour
     public float groundCheckRadius;
     private float LastShoot;
 
-
     [Header("Detección de suelo y paredes")]
     public LayerMask groundLayer;
     public LayerMask wallLayer;
@@ -49,11 +48,9 @@ public class MovePlayer : MonoBehaviour
         Debug.DrawRay(transform.position, Vector2.left * groundCheckRadius, Color.green);
         Debug.DrawRay(transform.position, Vector2.right * groundCheckRadius, Color.blue);
 
-        // Verifica suelo y pared por separado
         Grounded = hitDown;
         OnWall = hitLeft || hitRight;
 
-        // Permite salto tanto en suelo como en pared
         if (Input.GetKeyDown(KeyCode.Space) && (Grounded || OnWall))
         {
             Jump();
@@ -73,12 +70,10 @@ public class MovePlayer : MonoBehaviour
 
     private void Shoot()
     {
-        Vector3 direction;
-        if (transform.localScale.x == 1.0f) direction = Vector2.right;
-        else direction = Vector2.left;
+        Vector3 direction = transform.localScale.x > 0 ? Vector2.right : Vector2.left;
         Animator.SetTrigger("shooting");
-        Instantiate(BulletPrefab, transform.position, Quaternion.identity);
-        GameObject bullet = Instantiate(BulletPrefab, transform.position, Quaternion.identity); 
+
+        GameObject bullet = Instantiate(BulletPrefab, transform.position, Quaternion.identity);
         bullet.GetComponent<BulletScript>().SetDirection(direction);
     }
 

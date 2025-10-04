@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      botonpausablanco_0: -7155238476722684290
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

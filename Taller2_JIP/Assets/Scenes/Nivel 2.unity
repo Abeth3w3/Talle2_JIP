@@ -242,7 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9771526cc2d2314ab879ebfd5df782b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BulletPrefab: {fileID: 6099163876983158140, guid: f3c38d2f43aa0d848984596f7db42add, type: 3}
+  BulletPrefab: {fileID: 1994515533}
   speed: 5
   jumpForce: 10
   groundCheckRadius: 0.5
@@ -499,7 +499,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 1
   value: 3
-  pickupSfx: {fileID: 0}
 --- !u!58 &353248987
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1127,7 +1126,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 0
   value: 1
-  pickupSfx: {fileID: 0}
 --- !u!58 &662253399
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1587,7 +1585,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 0
   value: 1
-  pickupSfx: {fileID: 0}
 --- !u!58 &1014681811
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2225,6 +2222,63 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1001 &1148646763
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6099163876983158140, guid: f3c38d2f43aa0d848984596f7db42add, type: 3}
+      propertyPath: m_Name
+      value: Bullet
+      objectReference: {fileID: 0}
+    - target: {fileID: 8844534783094570301, guid: f3c38d2f43aa0d848984596f7db42add, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -16.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 8844534783094570301, guid: f3c38d2f43aa0d848984596f7db42add, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 8844534783094570301, guid: f3c38d2f43aa0d848984596f7db42add, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8844534783094570301, guid: f3c38d2f43aa0d848984596f7db42add, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8844534783094570301, guid: f3c38d2f43aa0d848984596f7db42add, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8844534783094570301, guid: f3c38d2f43aa0d848984596f7db42add, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8844534783094570301, guid: f3c38d2f43aa0d848984596f7db42add, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8844534783094570301, guid: f3c38d2f43aa0d848984596f7db42add, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8844534783094570301, guid: f3c38d2f43aa0d848984596f7db42add, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8844534783094570301, guid: f3c38d2f43aa0d848984596f7db42add, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f3c38d2f43aa0d848984596f7db42add, type: 3}
 --- !u!1 &1190577761
 GameObject:
   m_ObjectHideFlags: 0
@@ -6944,7 +6998,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 0
   value: 1
-  pickupSfx: {fileID: 0}
 --- !u!58 &1487275517
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -7354,7 +7407,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 1
   value: 4
-  pickupSfx: {fileID: 0}
 --- !u!58 &1746069090
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -7494,6 +7546,11 @@ Transform:
   - {fileID: 1132295146}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1994515533 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6099163876983158140, guid: f3c38d2f43aa0d848984596f7db42add, type: 3}
+  m_PrefabInstance: {fileID: 1148646763}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2025868753
 GameObject:
   m_ObjectHideFlags: 0
@@ -7542,7 +7599,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 0
   value: 1
-  pickupSfx: {fileID: 0}
 --- !u!58 &2025868756
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -7718,7 +7774,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemType: 2
   value: 0
-  pickupSfx: {fileID: 0}
 --- !u!212 &2120883333
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7788,3 +7843,4 @@ SceneRoots:
   - {fileID: 1571014800}
   - {fileID: 1522328577}
   - {fileID: 1190577770}
+  - {fileID: 1148646763}
